@@ -27,6 +27,7 @@ const requestLogger = (request, response, next) => {
   console.log("---");
   next();
 };
+//app.use(express.static("dist"));
 app.use(requestLogger);
 
 app.get("/", (request, response) => {
@@ -82,12 +83,9 @@ app.post("/api/notes", (request, response) => {
 const unknownEndpoint = (request, response) => {
   response.status(404).send({ error: "unknown endpoint" });
 };
-
 app.use(unknownEndpoint);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-app.listen(PORT);
-console.log(`Server running on port ${PORT}`);
