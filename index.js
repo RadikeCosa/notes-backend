@@ -27,7 +27,7 @@ const requestLogger = (request, response, next) => {
   console.log("---");
   next();
 };
-//app.use(express.static("dist"));
+app.use(express.static("dist"));
 app.use(requestLogger);
 
 app.get("/", (request, response) => {
